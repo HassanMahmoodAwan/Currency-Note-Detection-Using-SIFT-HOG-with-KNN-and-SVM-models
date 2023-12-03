@@ -1,0 +1,2 @@
+# Currency-Note-Detection-Using-SIFT-HOG-with-KNN-and-SVM-models
+Pakistani Currency Note Detection Done Using Feature Extraction Technique like SIFT and HOG. Using both these Feature Extractor and Descriptor, I extracted the features from Images and then Combine these features. Based on these features use Classifier models like KNN and SVM model to train on dataset. Then using Flask, I developed an Application.
