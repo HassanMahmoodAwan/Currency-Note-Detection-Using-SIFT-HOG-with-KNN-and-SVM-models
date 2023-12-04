@@ -12,8 +12,8 @@ import joblib
 app = Flask('Currency Detection Using SIFT & HOG')
 
 # Load the trained models
-svm_model = joblib.load('svm_model.pkl')
-knn_model = joblib.load('knn_model.pkl')
+svm_model = joblib.load('models/svm_model.pkl')
+knn_model = joblib.load('models/knn_model.pkl')
 
 
 # Function to extract SIFT features from an image
@@ -82,9 +82,31 @@ def classify():
         
 
             # Classify the uploaded image
-            svm_prediction, knn_prediction = classify_image(image_path)    
+            svm_prediction, knn_prediction = classify_image(image_path)   
 
-            return render_template("index.html", class_name=svm_prediction)
+            if svm_prediction == 0:
+                svm_predict = 'Five Hundred Rupees Note : 500'
+            elif svm_prediction == 1:
+                svm_predict = 'Thousand Rupees Note : 1000'
+            elif svm_prediction == 2:
+                svm_predict = 'Five Thousand Rupees Note : 5000'
+            else:
+                svm_predict = 'Wrong Input, Give Input Again'
+
+            if knn_prediction == 0:
+                knn_predict = 'Five Hundred Rupees Note : 500'
+            elif knn_prediction == 1:
+                knn_predict = 'Thousand Rupees Note : 1000'
+            elif knn_prediction == 2:
+                knn_predict = 'Five Thousand Rupees Note : 5000'
+            else:
+                knn_predict = 'Wrong Input, Give Input Again'
+
+
+
+
+
+            return render_template("index.html", svm_prediction =svm_predict, knn_prediction = knn_predict)
         
     else:
         return render_template("index.html")

@@ -6,9 +6,13 @@
 </head>
 <body class = 'container mt-4'>
     <h1 class = 'mb-4'>Pakistan Currency Note Classification</h1>
+    <h3>Classifcation Using <b> KNN </b> and  <b> SVM </b></h3>
     <hr>
-    {% if class_name %}
-        <h4 class = 'mb-3'>The predicted class is: {{ class_name }}</h4>
+
+    
+    {% if knn_prediction and svm_prediction %}
+        <h4 class = 'mt-2 mb-3'>The predicted class using <b> KNN </b> is: {{ knn_prediction}} </h4>
+        <h4 class = 'mb-3'>The predicted class usin <b> SVM </b> is: {{ svm_prediction}} </h4>
         <img src="{{ url_for('static', filename='uploaded_image.jpg') }}" alt="Uploaded Image" width = '1100' height = '350'>
         <p><a href="/" class="btn btn-success mt-5">Upload another image</a></p>
     {% else %}
